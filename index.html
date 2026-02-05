@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Evaluacion de Estudiantes">
-<meta name="description" content="Este paquete se encarga de evaluar y determinar el estado de los estudiantes segun sus calificaciones y asistencias">
-<meta property="og:description" content="Este paquete se encarga de evaluar y determinar el estado de los estudiantes segun sus calificaciones y asistencias">
+<meta name="description" content="El paquete proporciona funciones para clasificar estudiantes segun su rendimiento academico y nivel de asistencia. A partir de estos criterios, permite determinar el estado general del estudiante. Ademas, incluye un conjunto de datos con informacion sobre los idiomas oficiales de distintos paises. El paquete esta orientado a fines practicos y educativos.">
+<meta property="og:description" content="El paquete proporciona funciones para clasificar estudiantes segun su rendimiento academico y nivel de asistencia. A partir de estos criterios, permite determinar el estado general del estudiante. Ademas, incluye un conjunto de datos con informacion sobre los idiomas oficiales de distintos paises. El paquete esta orientado a fines practicos y educativos.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -51,43 +51,102 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level1">
+  <main id="main" class="col-md-9"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/biancaarossi/mipaquetepractica" class="external-link">mipaquetepractica</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level1">
 <div class="page-header"><h1 id="mipaquetepractica">mipaquetepractica<a class="anchor" aria-label="anchor" href="#mipaquetepractica"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
-<p>The goal of mipaquetepractica is to …</p>
+
+<p>El paquete <strong>mipaquetepractica</strong> proporciona funciones simples para clasificar estudiantes segun su rendimiento academico y nivel de asistencia.<br>
+Además, incluye un dataset con información sobre los idiomas oficiales de distintos países.</p>
+<p>El paquete está pensado con fines prácticos y educativos.</p>
+<hr>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of mipaquetepractica from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"biancaarossi/mipaquetepractica"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<p>You can install the development version of mipaquetepractica from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/biancaarossi/mipaquetepractica" class="external-link">mipaquetepractica</a></span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="co"># pak::pak("biancaarossi/mipaquetepractica")</span></span></code></pre></div>
+<p>Functions</p>
+<p>El paquete incluye tres funciones principales.</p>
+<p>Clasificacion del rendimiento académico</p>
+<p>La funcion calcular_rendimiento() clasifica a los estudiantes según su promedio de calificaciones.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/calcular_rendimiento.html">calcular_rendimiento</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Excelente"</span></span>
+<span><span class="fu"><a href="reference/calcular_rendimiento.html">calcular_rendimiento</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">7</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Excelente"    "Bueno"        "Regular"      "Insuficiente"</span></span></code></pre></div>
+<p>Clasificación del nivel de asistencia</p>
+<p>La función nivel_asistencia() clasifica la asistencia expresada como una proporción entre 0 y 1.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/nivel_asistencia.html">nivel_asistencia</a></span><span class="op">(</span><span class="fl">0.85</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Alta"</span></span>
+<span><span class="fu"><a href="reference/nivel_asistencia.html">nivel_asistencia</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.75</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Alta"  "Media" "Baja"</span></span></code></pre></div>
+<p>Estado general del estudiante</p>
+<p>La funcion estado_estudiante() combina el rendimiento académico y el nivel de asistencia para determinar el estado general del estudiante.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/estado_estudiante.html">estado_estudiante</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">0.9</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Destacado"</span></span>
+<span><span class="fu"><a href="reference/estado_estudiante.html">estado_estudiante</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">6</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.9</span>, <span class="fl">0.7</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Destacado" "Regular"   "En riesgo"</span></span></code></pre></div>
+<p>Dataset</p>
+<p>El paquete incluye el dataset idiomas, que contiene información sobre los idiomas oficiales de distintos países.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">idiomas</span></span>
+<span><span class="co">#&gt; # A tibble: 25 × 3</span></span>
+<span><span class="co">#&gt;    pais        idioma_oficial_1 idioma_oficial_2</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;           </span></span>
+<span><span class="co">#&gt;  1 Argentina   español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  2 Bolivia     español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  3 Brasil      portugues        &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  4 Canadá      ingles           frances         </span></span>
+<span><span class="co">#&gt;  5 Chile       español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  6 Colombia    español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  7 Costa Rica  español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  8 Cuba        español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt;  9 Ecuador     español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt; 10 El Salvador español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
+<p>Algunas operaciones básicas sobre el dataset:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">idiomas</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt;   pais      idioma_oficial_1 idioma_oficial_2</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;           </span></span>
+<span><span class="co">#&gt; 1 Argentina español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt; 2 Bolivia   español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt; 3 Brasil    portugues        &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt; 4 Canadá    ingles           frances         </span></span>
+<span><span class="co">#&gt; 5 Chile     español          &lt;NA&gt;            </span></span>
+<span><span class="co">#&gt; 6 Colombia  español          &lt;NA&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">idiomas</span><span class="op">)</span></span>
+<span><span class="co">#&gt; spc_tbl_ [25 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ pais            : chr [1:25] "Argentina" "Bolivia" "Brasil" "Canadá" ...</span></span>
+<span><span class="co">#&gt;  $ idioma_oficial_1: chr [1:25] "español" "español" "portugues" "ingles" ...</span></span>
+<span><span class="co">#&gt;  $ idioma_oficial_2: chr [1:25] NA NA NA "frances" ...</span></span>
+<span><span class="co">#&gt;  - attr(*, "spec")=List of 3</span></span>
+<span><span class="co">#&gt;   ..$ cols   :List of 3</span></span>
+<span><span class="co">#&gt;   .. ..$ pais            : list()</span></span>
+<span><span class="co">#&gt;   .. .. ..- attr(*, "class")= chr [1:2] "collector_character" "collector"</span></span>
+<span><span class="co">#&gt;   .. ..$ idioma_oficial_1: list()</span></span>
+<span><span class="co">#&gt;   .. .. ..- attr(*, "class")= chr [1:2] "collector_character" "collector"</span></span>
+<span><span class="co">#&gt;   .. ..$ idioma_oficial_2: list()</span></span>
+<span><span class="co">#&gt;   .. .. ..- attr(*, "class")= chr [1:2] "collector_character" "collector"</span></span>
+<span><span class="co">#&gt;   ..$ default: list()</span></span>
+<span><span class="co">#&gt;   .. ..- attr(*, "class")= chr [1:2] "collector_guess" "collector"</span></span>
+<span><span class="co">#&gt;   ..$ delim  : chr ","</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "class")= chr "col_spec"</span></span>
+<span><span class="co">#&gt;  - attr(*, "problems")=&lt;externalptr&gt;</span></span></code></pre></div>
+<p>Notes</p>
+<p>Las funciones aceptan tanto valores individuales como vectores.</p>
+<p>Los argumentos son validados para evitar valores inválidos.</p>
+<p>El dataset se carga automáticamente al usar el paquete.</p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -100,7 +159,7 @@
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small>`use_mit_license()`, `use_gpl3_license()` or friends to pick a license</small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
@@ -119,7 +178,13 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/biancaarossi/mipaquetepractica/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/biancaarossi/mipaquetepractica/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://app.codecov.io/gh/biancaarossi/mipaquetepractica" class="external-link"><img src="https://codecov.io/gh/biancaarossi/mipaquetepractica/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>

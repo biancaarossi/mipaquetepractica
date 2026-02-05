@@ -8,6 +8,8 @@ no contener valores NA y estar entre 0 y 10.
 
 ``` r
 calcular_rendimiento(promedio)
+
+calcular_rendimiento(promedio)
 ```
 
 ## Arguments
