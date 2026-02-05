@@ -12,9 +12,17 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
+```{r}
+library(mipaquetepractica)
+```
+
+
 # mipaquetepractica
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/biancaarossi/mipaquetepractica/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/biancaarossi/mipaquetepractica/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/biancaarossi/mipaquetepractica/graph/badge.svg)](https://app.codecov.io/gh/biancaarossi/mipaquetepractica)
 <!-- badges: end -->
 
 El paquete **mipaquetepractica** proporciona funciones simples para clasificar
@@ -31,7 +39,7 @@ El paquete está pensado con fines prácticos y educativos.
 You can install the development version of mipaquetepractica from GitHub with:
 ```{r}
 # install.packages("pak")
-pak::pak("biancaarossi/mipaquetepractica")
+# pak::pak("biancaarossi/mipaquetepractica")
 ```
 
 
@@ -44,12 +52,10 @@ Clasificacion del rendimiento académico
 La funcion calcular_rendimiento() clasifica a los estudiantes según su
 promedio de calificaciones.
 
-```{r}
-library(mipaquetepractica)
 
+```{r}
 calcular_rendimiento(9)
 calcular_rendimiento(c(10, 7, 5, 3))
-
 ```
 
 Clasificación del nivel de asistencia

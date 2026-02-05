@@ -1,53 +1,139 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+``` r
+library(mipaquetepractica)
+```
+
 # mipaquetepractica
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/biancaarossi/mipaquetepractica/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/biancaarossi/mipaquetepractica/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/biancaarossi/mipaquetepractica/graph/badge.svg)](https://app.codecov.io/gh/biancaarossi/mipaquetepractica)
 <!-- badges: end -->
 
-The goal of mipaquetepractica is to …
+El paquete **mipaquetepractica** proporciona funciones simples para
+clasificar estudiantes segun su rendimiento academico y nivel de
+asistencia.  
+Además, incluye un dataset con información sobre los idiomas oficiales
+de distintos países.
+
+El paquete está pensado con fines prácticos y educativos.
+
+------------------------------------------------------------------------
 
 ## Installation
 
-You can install the development version of mipaquetepractica from
-[GitHub](https://github.com/) with:
+You can install the development version of mipaquetepractica from GitHub
+with:
 
 ``` r
 # install.packages("pak")
-pak::pak("biancaarossi/mipaquetepractica")
+# pak::pak("biancaarossi/mipaquetepractica")
 ```
 
-## Example
+Functions
 
-This is a basic example which shows you how to solve a common problem:
+El paquete incluye tres funciones principales.
+
+Clasificacion del rendimiento académico
+
+La funcion calcular_rendimiento() clasifica a los estudiantes según su
+promedio de calificaciones.
 
 ``` r
-library(mipaquetepractica)
-## basic example code
+calcular_rendimiento(9)
+#> [1] "Excelente"
+calcular_rendimiento(c(10, 7, 5, 3))
+#> [1] "Excelente"    "Bueno"        "Regular"      "Insuficiente"
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Clasificación del nivel de asistencia
+
+La función nivel_asistencia() clasifica la asistencia expresada como una
+proporción entre 0 y 1.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+nivel_asistencia(0.85)
+#> [1] "Alta"
+nivel_asistencia(c(1, 0.75, 0.5))
+#> [1] "Alta"  "Media" "Baja"
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+Estado general del estudiante
 
-You can also embed plots, for example:
+La funcion estado_estudiante() combina el rendimiento académico y el
+nivel de asistencia para determinar el estado general del estudiante.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+``` r
+estado_estudiante(9, 0.9)
+#> [1] "Destacado"
+estado_estudiante(c(9, 6, 3), c(0.9, 0.7, 0.4))
+#> [1] "Destacado" "Regular"   "En riesgo"
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+Dataset
+
+El paquete incluye el dataset idiomas, que contiene información sobre
+los idiomas oficiales de distintos países.
+
+``` r
+idiomas
+#> # A tibble: 25 × 3
+#>    pais        idioma_oficial_1 idioma_oficial_2
+#>    <chr>       <chr>            <chr>           
+#>  1 Argentina   español          <NA>            
+#>  2 Bolivia     español          <NA>            
+#>  3 Brasil      portugues        <NA>            
+#>  4 Canadá      ingles           frances         
+#>  5 Chile       español          <NA>            
+#>  6 Colombia    español          <NA>            
+#>  7 Costa Rica  español          <NA>            
+#>  8 Cuba        español          <NA>            
+#>  9 Ecuador     español          <NA>            
+#> 10 El Salvador español          <NA>            
+#> # ℹ 15 more rows
+```
+
+Algunas operaciones básicas sobre el dataset:
+
+``` r
+head(idiomas)
+#> # A tibble: 6 × 3
+#>   pais      idioma_oficial_1 idioma_oficial_2
+#>   <chr>     <chr>            <chr>           
+#> 1 Argentina español          <NA>            
+#> 2 Bolivia   español          <NA>            
+#> 3 Brasil    portugues        <NA>            
+#> 4 Canadá    ingles           frances         
+#> 5 Chile     español          <NA>            
+#> 6 Colombia  español          <NA>
+str(idiomas)
+#> spc_tbl_ [25 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+#>  $ pais            : chr [1:25] "Argentina" "Bolivia" "Brasil" "Canadá" ...
+#>  $ idioma_oficial_1: chr [1:25] "español" "español" "portugues" "ingles" ...
+#>  $ idioma_oficial_2: chr [1:25] NA NA NA "frances" ...
+#>  - attr(*, "spec")=List of 3
+#>   ..$ cols   :List of 3
+#>   .. ..$ pais            : list()
+#>   .. .. ..- attr(*, "class")= chr [1:2] "collector_character" "collector"
+#>   .. ..$ idioma_oficial_1: list()
+#>   .. .. ..- attr(*, "class")= chr [1:2] "collector_character" "collector"
+#>   .. ..$ idioma_oficial_2: list()
+#>   .. .. ..- attr(*, "class")= chr [1:2] "collector_character" "collector"
+#>   ..$ default: list()
+#>   .. ..- attr(*, "class")= chr [1:2] "collector_guess" "collector"
+#>   ..$ delim  : chr ","
+#>   ..- attr(*, "class")= chr "col_spec"
+#>  - attr(*, "problems")=<externalptr>
+```
+
+Notes
+
+Las funciones aceptan tanto valores individuales como vectores.
+
+Los argumentos son validados para evitar valores inválidos.
+
+El dataset se carga automáticamente al usar el paquete.

@@ -3,13 +3,16 @@ Title: Evaluacion de Estudiantes
 Version: 0.0.0.9000
 Authors@R: 
     person("Bianca", "Rossi", , "biancarossiscaglia1@gmail.com", role = c("aut", "cre"))
-Description: Este paquete se encarga de evaluar y determinar el estado de los estudiantes segun sus calificaciones y asistencias
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: El paquete proporciona funciones para clasificar estudiantes segun su
+    rendimiento academico y nivel de asistencia. A partir de estos criterios,
+    permite determinar el estado general del estudiante. Ademas, incluye un
+    conjunto de datos con informacion sobre los idiomas oficiales de distintos
+    paises. El paquete esta orientado a fines practicos y educativos.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-URL: https://github.com/biancaarossi/mipaquetepractica
+URL: https://github.com/biancaarossi/mipaquetepractica, https://biancaarossi.github.io/mipaquetepractica/
 BugReports: https://github.com/biancaarossi/mipaquetepractica/issues
 Imports:
     cli, 
@@ -19,5 +22,7 @@ Depends:
 LazyData: true
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
