@@ -1,0 +1,101 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# mipaquetepractica
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+El paquete **mipaquetepractica** proporciona funciones simples para clasificar
+estudiantes segun su rendimiento academico y nivel de asistencia.  
+Además, incluye un dataset con información sobre los idiomas oficiales de
+distintos países.
+
+El paquete está pensado con fines prácticos y educativos.
+
+---
+
+## Installation
+
+You can install the development version of mipaquetepractica from GitHub with:
+```{r}
+# install.packages("pak")
+pak::pak("biancaarossi/mipaquetepractica")
+```
+
+
+Functions
+
+El paquete incluye tres funciones principales.
+
+Clasificacion del rendimiento académico
+
+La funcion calcular_rendimiento() clasifica a los estudiantes según su
+promedio de calificaciones.
+
+```{r}
+library(mipaquetepractica)
+
+calcular_rendimiento(9)
+calcular_rendimiento(c(10, 7, 5, 3))
+
+```
+
+Clasificación del nivel de asistencia
+
+La función nivel_asistencia() clasifica la asistencia expresada como una
+proporción entre 0 y 1.
+
+```{r}
+nivel_asistencia(0.85)
+nivel_asistencia(c(1, 0.75, 0.5))
+
+```
+
+Estado general del estudiante
+
+La funcion estado_estudiante() combina el rendimiento académico y el nivel
+de asistencia para determinar el estado general del estudiante.
+
+```{r}
+estado_estudiante(9, 0.9)
+estado_estudiante(c(9, 6, 3), c(0.9, 0.7, 0.4))
+
+```
+
+Dataset
+
+El paquete incluye el dataset idiomas, que contiene información sobre los
+idiomas oficiales de distintos países.
+
+```{r}
+idiomas
+
+```
+
+Algunas operaciones básicas sobre el dataset:
+
+```{r}
+head(idiomas)
+str(idiomas)
+
+```
+
+Notes
+
+Las funciones aceptan tanto valores individuales como vectores.
+
+Los argumentos son validados para evitar valores inválidos.
+
+El dataset se carga automáticamente al usar el paquete.
